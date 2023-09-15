@@ -61,10 +61,13 @@ installpkgs() {
 	cd $configdir
 	total=$(( $(wc -l < ~/voidscript/progs.csv) -1 ))
 	n=0
-	while IFS="," read -r program description
+	while IFS="," read -r type program description
 	do
 		echo "Installing \`$program\` ($n of $total). $description."
-		sudo -u $username xbps-install -S "$program" >/dev/null 2>&1
+		case $type in
+			G) sudo -u $username git clone https://github.com/x1nigo/$program.git >/dev/null 2>&1 ;;
+			*) sudo -u $username xbps-install -S "$program" >/dev/null 2>&1 ;;
+		esac
 	done < ~/voidscript/progs.csv
 }
 
@@ -124,8 +127,9 @@ changeshell() {
 }
 
 depower() {
+	rm /etc/sudoers.d/*
 	echo "%wheel ALL=(ALL:ALL) ALL" > /etc/sudoers.d/00-wheels-can-sudo
-	echo "%wheel ALL=(ALL:ALL) NOPASSWD: /usr/bin/shutdown,/usr/bin/poweroff,/usr/bin/reboot,/usr/bin/su,/usr/bin/make clean install,/usr/bin/xbps-install -Su/usr/bin/mount,/usr/bin/umount,/usr/bin/cryptsetup,/usr/bin/simple-mtpfs,/usr/bin/fusermount" > /etc/sudoers.d/01-no-password-commands
+	echo "%wheel ALL=(ALL:ALL) NOPASSWD: /usr/bin/shutdown,/usr/bin/poweroff,/usr/bin/reboot,/usr/bin/su,/usr/bin/make clean install,/usr/bin/xbps-install -Su,/usr/bin/mount,/usr/bin/umount,/usr/bin/cryptsetup,/usr/bin/simple-mtpfs,/usr/bin/fusermount" > /etc/sudoers.d/01-no-password-commands
 }
 
 ### Main Function ###

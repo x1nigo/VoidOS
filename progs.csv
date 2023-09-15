@@ -1,0 +1,68 @@
+Type,Program,Description
+,sxiv,The simple X image viewer
+,zathura,A document viewer
+,zathura-pdf-mupdf,Support for PDF and similar documents
+,mpv,A terminal media player
+,ffmpeg,A video converter
+,picom,Compositor for X11
+,xwallpaper,A wallpaper setting utility for X
+,lf,A terminal file manager
+,dunst,A lightweight notification-daemon
+,libnotify,Library for sending desktop notifications
+,mpd,A music player daemon
+,ncmpcpp,An ncurses music player daemon client
+,mpc,Command-line client for mpd
+,newsboat,An RSS/Atom feed reader for terminals
+,transmission,A torrent client for the terminal
+,stig,A curses interface for transmission-daemon
+,NetworkManager,Network Management daemon
+,pipewire,A program to enable audio
+,wireplumber,Session manager implementation for pipewire
+,sof-firmware,Sound open firmware for audio
+,pulsemixer,CLI and curses mixer for pulseaudio/pipewire
+,bluez,Daemon for bluetooth
+,libspa-bluetooth,To enable bluetooth compatibility with pipewire
+,yt-dlp,Allows you to download media from YouTube
+,xorg,An X11R7 server
+,xinit,An X window system initializer
+,xdg-user-dirs,Helps manage user directories
+,gnome-keyring,Stores secrets/passwords/keys/certs for applications
+,dejavu-fonts-ttf,DejaVu family of TrueType fonts
+,font-libertine-ttf,Libertine TTF Fonts - Libre multilingual font family
+,noto-fonts-ttf,Google Noto TTF Fonts
+,noto-fonts-emoji,Google Noto Emoji Fonts
+,zsh,The Zoomer Shell
+,zsh-autosuggestions,Fish-like autosuggestions for zsh
+,zsh-syntax-highlighting,Fish shell like syntax highlighting for zsh
+,maim,Utility that takes a screenshot of your desktop
+,xcape,Modifies keys to act as other keys when pressed/released
+,unzip,Unzip zipped files
+,lynx,A browser for the terminal
+,xclip,Basically the clipboard
+,xdotool,Command-line X11 automation tool
+,bat,Concatenate files with syntax highlighting
+,simple-mtpfs,To mount Android devices
+,slock,The simple X screen locker
+,unclutter,Hides an inactive cursor
+,fzf,A command-line fuzzy finder
+,bc,A terminal calculator
+,ntp,A network protocol reference implementation
+,fontconfig,Library for configuring and customizing font access
+,fontconfig-devel,Fontconfig development files
+,freetype,Font rendering engine and library API
+,freetype-devel,Freetype development files
+,glibc,GNU C library
+,glibc-devel,GNU C library development files
+,libX11,Base X libraries from Xorg
+,libX11-devel,libX11 development files
+,libXft,Library for configuring and customizing font access
+,libXft-devel,libXft development files
+,ncurses,System V curses emulation library
+,ncurses-devel,ncurses development files
+,harfbuzz,OpenType text shaping engine
+,harfbuzz-devel,harfbuzz development files
+G,dotfiles,My personal configuration files
+G,dwm,The suckless dynamic window manager
+G,st,The simple terminal
+G,dmenu,The dynamic menu
+G,dwmblocks,Modular status bar for dwm written in C
