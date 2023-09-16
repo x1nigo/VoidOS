@@ -5,9 +5,13 @@
 
 # This script assumes that you have already created
 # a new username upon base installation.
-# TODO: Run this script as ROOT!
+
+# Things to note:
+# 	- Run this script as ROOT!
+#	- Make sure you have 'curl' installed.
 
 username="$(ls /home/)"
+progsfile="https://raw.githubusercontent.com/x1nigo/voidscript/main/progs.csv"
 
 error() {
 	echo "$1" && exit
@@ -58,6 +62,7 @@ updatedirs() {
 ### Main Installation ###
 
 installpkgs() {
+	curl -Ls "$progsfile" > /tmp/progs.csv
 	cd $configdir
 	total=$(( $(wc -l < ~/voidscript/progs.csv) -1 ))
 	n=0
@@ -68,7 +73,7 @@ installpkgs() {
 			G) sudo -u $username git clone https://github.com/x1nigo/$program.git >/dev/null 2>&1 ;;
 			*) sudo -u $username xbps-install -S "$program" >/dev/null 2>&1 ;;
 		esac
-	done < ~/voidscript/progs.csv
+	done < /tmp/progs.csv
 }
 
 movefiles() {
@@ -117,6 +122,7 @@ removebeep() {
 
 cleanthis() {
 	rm -r ~/voidscript $configdir/dotfiles /home/$username/README.md
+	rm /tmp/progs.csv
 	sudo -u $username mkdir /home/$username/.config/gnupg/ &&
 	sudo -u $username mkdir -p /home/$username/.config/mpd/playlists/ &&
 	sudo -u $username chmod +x /home/$username/.local/bin/* /home/$username/.local/bin/statusbar/* || error "Failed to remove unnecessary files and other cleaning."
@@ -124,6 +130,10 @@ cleanthis() {
 
 changeshell() {
 	chsh -s /bin/zsh $username >/dev/null 2>&1
+	echo "# .bashrc
+
+alias ls='ls --color=auto'
+PS1='\[\e[1;31m[\u@\h \W]\e[0m\]\$ '" > ~/.bashrc
 }
 
 depower() {
