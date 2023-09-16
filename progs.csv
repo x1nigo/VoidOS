@@ -41,6 +41,7 @@ Type,Program,Description
 ,xclip,Basically the clipboard
 ,xdotool,Command-line X11 automation tool
 ,bat,Concatenate files with syntax highlighting
+,polkit,An authorization manager/toolkit
 ,simple-mtpfs,To mount Android devices
 ,slock,The simple X screen locker
 ,unclutter,Hides an inactive cursor
