@@ -115,6 +115,14 @@ filemanager() {
 	sudo -u $username chmod +x /home/$username/.config/lf/cleaner /home/$username/.config/lf/scope
 }
 
+gtktheme() {
+	cd /home/$username/Documents
+ 	git clone https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme &&
+  	cd Gruvbox-GTK-Theme
+   	sudo -u $username mv themes /home/$username/.local/share
+    	sudo -u $username mv icons /home/$username/.local/share
+}
+
 removebeep() {
 	rmmod pcspkr 2>/dev/null
 	echo "blacklist pcspkr" >/etc/modprobe.d/nobeep.conf
@@ -125,7 +133,8 @@ cleanthis() {
 	rm /tmp/progs.csv
 	sudo -u $username mkdir /home/$username/.config/gnupg/ &&
 	sudo -u $username mkdir -p /home/$username/.config/mpd/playlists/ &&
-	sudo -u $username chmod +x /home/$username/.local/bin/* /home/$username/.local/bin/statusbar/* || error "Failed to remove unnecessary files and other cleaning."
+	sudo -u $username chmod +x /home/$username/.local/bin/* /home/$username/.local/bin/statusbar/* || error "Failed to remove unnecessary files and other cleaning." &&
+ 	cd /home/$username
 }
 
 changeshell() {
