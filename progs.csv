@@ -31,7 +31,6 @@ Type,Program,Description
 ,font-libertine-ttf,Libertine TTF Fonts - Libre multilingual font family
 ,noto-fonts-ttf,Google Noto TTF Fonts
 ,noto-fonts-emoji,Google Noto Emoji Fonts
-,nerd-fonts-ttf,Nerd fonts for TTF and icons
 ,zsh,The Zoomer Shell
 ,zsh-autosuggestions,Fish-like autosuggestions for zsh
 ,zsh-syntax-highlighting,Fish shell like syntax highlighting for zsh
