@@ -6,7 +6,7 @@ This is my bootstrapping script specifically for void linux.
 
 - A newly installed void linux system.
 - An internet connection.
-- Have `git` installed.
+- Have `git` and `curl` installed.
 - Make sure you run this script as `root`.
 
 ```
