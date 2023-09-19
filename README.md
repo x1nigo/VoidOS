@@ -1,3 +1,23 @@
-# The Void Script
+# Chris Iñigo's Bootstrapping Script for Void Linux
 
-- Please take note that this is still in development. Do not use this script yet.
+This is my bootstrapping script specifically for void linux.
+
+## Requirements
+
+- A newly installed void linux system.
+- An internet connection.
+- Have `git` installed.
+- Make sure you run this script as `root`.
+
+```
+git clone https://github.com/x1nigo/voidscript.git
+cd voidscript
+sh voidscript.sh
+```
+## What does it install?
+Aside from the programs listed in `progs.csv`, the voidscript installs my configuration files and my other suckless software repositories:
+- [dotfiles](https://github.com/x1nigo/dotfiles) &ndash; My dotfiles
+- [dwm](https://github.com/x1nigo/dwm) &ndash; The window manager
+- [st](https://github.com/x1nigo/st) &ndash; The terminal emulator
+- [dmenu](https://github.com/x1nigo/dmenu) &ndash; The dynamic menu launcher
+- [dwmblocks](https://github.com/x1nigo/dwmblocks) &ndash; The status bar
