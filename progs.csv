@@ -1,4 +1,4 @@
-Type,Program,Description
+TAG,NAME IN REPO (or git url),DESCRIPTION(a short description about the program)
 ,sxiv,The simple X image viewer
 ,zathura,A document viewer
 ,zathura-pdf-mupdf,Support for PDF and similar documents
@@ -61,8 +61,9 @@ Type,Program,Description
 ,ncurses-devel,ncurses development files
 ,harfbuzz,OpenType text shaping engine
 ,harfbuzz-devel,harfbuzz development files
-G,dotfiles,My personal configuration files
-G,dwm,The suckless dynamic window manager
-G,st,The simple terminal
-G,dmenu,The dynamic menu
-G,dwmblocks,Modular status bar for dwm written in C
+G,https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme,Gruvbox gtk theme for the system
+G,https://github.com/x1nigo/dotfiles.git,My personal configuration files
+G,https://github.com/x1nigo/dwm.git,The suckless dynamic window manager
+G,https://github.com/x1nigo/st.git,The simple terminal
+G,https://github.com/x1nigo/dmenu.git,The dynamic menu
+G,https://github.com/x1nigo/dwmblocks.git,Modular status bar for dwm written in C

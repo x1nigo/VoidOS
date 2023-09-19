@@ -1,6 +1,6 @@
 #! /bin/sh
 
-# Chris Iñigo's Void Script
+# Chris Iñigo's Bootstrapping Script for Void Linux
 # by Chris Iñigo <chris@x1nigo.xyz>
 
 # This script assumes that you have already created
@@ -66,11 +66,11 @@ installpkgs() {
 	cd $configdir
 	total=$(( $(wc -l < ~/voidscript/progs.csv) -1 ))
 	n=0
-	while IFS="," read -r type program description
+	while IFS="," read -r tag program description
 	do
 		echo "Installing \`$program\` ($n of $total). $description."
-		case $type in
-			G) sudo -u $username git clone https://github.com/x1nigo/$program.git >/dev/null 2>&1 ;;
+		case $tag in
+			G) sudo -u $username git clone "$program" >/dev/null 2>&1 ;;
 			*) sudo -u $username xbps-install -S "$program" >/dev/null 2>&1 ;;
 		esac
 	done < /tmp/progs.csv
@@ -116,11 +116,10 @@ filemanager() {
 }
 
 gtktheme() {
-	cd /home/$username/Documents
- 	git clone https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme &&
-  	cd Gruvbox-GTK-Theme
+	cd $configdir/Gruvbox-GTK-Theme
    	sudo -u $username mv themes /home/$username/.local/share
     	sudo -u $username mv icons /home/$username/.local/share
+	rm -r $configdir/Gruvbox-GTK-Theme
 }
 
 removebeep() {
@@ -133,8 +132,8 @@ cleanthis() {
 	rm /tmp/progs.csv
 	sudo -u $username mkdir /home/$username/.config/gnupg/ &&
 	sudo -u $username mkdir -p /home/$username/.config/mpd/playlists/ &&
-	sudo -u $username chmod +x /home/$username/.local/bin/* /home/$username/.local/bin/statusbar/* || error "Failed to remove unnecessary files and other cleaning." &&
- 	cd /home/$username
+	sudo -u $username chmod +x /home/$username/.local/bin/* /home/$username/.local/bin/statusbar/* || error "Failed to remove unnecessary files and other cleaning."
+	cd /home/$username
 }
 
 changeshell() {
