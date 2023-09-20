@@ -24,7 +24,6 @@ TAG,NAME IN REPO (or git url),DESCRIPTION(a short description about the program)
 ,libspa-bluetooth,To enable bluetooth compatibility with pipewire
 ,yt-dlp,Allows you to download media from YouTube
 ,xorg,An X11R7 server
-,xinit,An X window system initializer
 ,xdg-user-dirs,Helps manage user directories
 ,gnome-keyring,Stores secrets/passwords/keys/certs for applications
 ,dejavu-fonts-ttf,DejaVu family of TrueType fonts
