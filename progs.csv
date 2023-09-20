@@ -53,6 +53,8 @@ TAG,NAME IN REPO (or git url),DESCRIPTION(a short description about the program)
 ,freetype-devel,Freetype development files
 ,glibc,GNU C library
 ,glibc-devel,GNU C library development files
+,libXinerama-devel,X PanoramiX extension library development files
+,cparser,C99 parser and libfirm frontend
 ,libX11,Base X libraries from Xorg
 ,libX11-devel,libX11 development files
 ,libXft,Library for configuring and customizing font access
