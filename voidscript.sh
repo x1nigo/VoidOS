@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 # Chris Iñigo's Bootstrapping Script for Void Linux
 # by Chris Iñigo <chris@x1nigo.xyz>
@@ -70,8 +70,8 @@ installpkgs() {
 	do
 		echo "Installing \`$program\` ($n of $total). $description."
 		case $tag in
-			G) sudo -u $username git clone "$program" >/dev/null 2>&1 ;;
-			*) sudo -u $username xbps-install -S "$program" >/dev/null 2>&1 ;;
+			G) n=$(( n + 1 )) && sudo -u $username git clone "$program" >/dev/null 2>&1 ;;
+			*) n=$(( n + 1 )) && xbps-install -Sy "$program" >/dev/null 2>&1 ;;
 		esac
 	done < /tmp/progs.csv
 }
@@ -87,6 +87,7 @@ movefiles() {
 }
 
 updateudev() {
+	mkdir -p /etc/X11/xorg.conf.d
 	echo "Section \"InputClass\"
 Identifier \"touchpad\"
 Driver \"libinput\"
