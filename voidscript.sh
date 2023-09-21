@@ -156,6 +156,7 @@ depower() {
 
 ### Main Function ###
 
+getdialog || error "Failed to initiate proceedings."
 openingmsg || error "Failed to show opening message."
 prompt || error "Failed to prompt the user properly."
 permission || error "Failed to change permissions for user."
