@@ -70,7 +70,7 @@ installpkgs() {
 		dialog --infobox "Installing \`$program\` ($n of $total). $description." 8 70
 		case $tag in
 			G) n=$(( n + 1 )) && sudo -u $username git clone "$program" >/dev/null 2>&1 ;;
-			*) n=$(( n + 1 )) && xbps-install -Sy "$program" >/dev/null 2>&1 ;;
+			*) n=$(( n + 1 )) && xbps-install -y "$program" >/dev/null 2>&1 ;;
 		esac
 	done < /tmp/progs.csv
 }
