@@ -17,31 +17,34 @@ error() {
 	echo "$1" && exit
 }
 
-openingmsg() { cat << EOF
-Introduction:
-
-Welcome to the installation script for Chris Iñigo's Void Linux system!
-This will install a fully-functioning linux desktop, which I hope may
-prove useful to you as it did for me.
-
--Chris
-EOF
+getdialog() {
+	echo "
+Just making sure that everything is ready and that \`dialog\` is installed on your system.
+"
+	xbps-install -Syu dialog
 }
 
-areyouready() { cat << EOF
-Are you ready to begin the installation? [Y/n]
-EOF
-
-read -r answer
-[ "$answer" = "n" ] && exit
+openingmsg() {
+	dialog --title "Introduction" \
+		--msgbox "Welcome to Chris Iñigo's Bootstrapping Script for Void Linux! This will install a fully-functioning linux desktop, which I hope may prove useful to you as it did for me.\\n\\n-Chris" 12 60
 }
 
-closingmsg() { cat << EOF
-Installation complete! Assuming that there were no hidden errors from the
-voidscript, then you're good to go!
+prompt() {
+	dialog --title "Resolution" \
+		--yes-button "Let's go!" \
+		--no-button "I...I can barely stand." \
+		--yesno "The installation script will be fully automated from this point onwards.\\nAre you ready to begin?" 0 0
 
-You may log out of the current session and log back in with your username.
-EOF
+	beginprompt="$?"
+	if [ $beginprompt = 0 ]; then
+		echo "begin" >/dev/null
+	else
+		error "User is not ready."
+	fi
+}
+
+closingmsg() {
+	dialog --title "Done!" --msgbox "Installation complete! If you see this message, then there's a pretty good chance that there were no (hidden) errors. You may log out and log back in with your new username.\\n\\n-Chris" 12 60
 }
 
 permission() {
@@ -55,10 +58,6 @@ create_dirs() {
 	configdir="/home/$username/.config"
 }
 
-updatedirs() {
-	sudo -u $username xdg-user-dirs-update
-}
-
 ### Main Installation ###
 
 installpkgs() {
@@ -68,12 +67,16 @@ installpkgs() {
 	n=0
 	while IFS="," read -r tag program description
 	do
-		echo "Installing \`$program\` ($n of $total). $description."
+		dialog --infobox "Installing \`$program\` ($n of $total). $description." 8 70
 		case $tag in
 			G) n=$(( n + 1 )) && sudo -u $username git clone "$program" >/dev/null 2>&1 ;;
 			*) n=$(( n + 1 )) && xbps-install -Sy "$program" >/dev/null 2>&1 ;;
 		esac
 	done < /tmp/progs.csv
+}
+
+update_dirs() {
+	sudo -u $username xdg-user-dirs-update
 }
 
 movefiles() {
@@ -98,7 +101,7 @@ EndSection" > /etc/X11/xorg.conf.d/30-touchpad.conf
 }
 
 compilesuckless() {
-	echo "Compiling suckless software..."
+	dialog --infobox "Compiling suckless software..." 7 40
 	cd $configdir/dwm && sudo -u $username sudo make clean install >/dev/null 2>&1
 	cd $configdir/st && sudo -u $username sudo make clean install >/dev/null 2>&1
 	cd $configdir/dmenu && sudo -u $username sudo make clean install >/dev/null 2>&1
@@ -154,7 +157,7 @@ depower() {
 ### Main Function ###
 
 openingmsg || error "Failed to show opening message."
-areyouready || error "Failed to prompt the user properly."
+prompt || error "Failed to prompt the user properly."
 permission || error "Failed to change permissions for user."
 create_dirs || error "Failed to create directories properly."
 installpkgs || error "Failed to install the necessary packages."
