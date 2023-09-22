@@ -90,8 +90,8 @@ installpkgs() {
 
 getdotfiles() {
 	dialog --infobox "Downloading and installing config files..." 7 60
-	sudo -u "$name" git -C "/home/$name" clone "$dotfilesrepo"
-	cd /home/$name/dotfiles
+	sudo -u "$name" git -C "$repodir" clone "$dotfilesrepo"
+	cd "$repodir"/dotfiles
 	shopt -s dotglob && sudo -u "$name" rsync * /home/$name
 	# Install the file manager.
 	cd /home/$name/.config/lf && chmod +x lfrun scope cleaner && sudo -u "$name" mv lfrun /usr/bin
