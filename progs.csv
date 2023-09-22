@@ -50,6 +50,7 @@ TAG,NAME IN REPO (or git url),DESCRIPTION(a short description about the program)
 ,fontconfig-devel,Fontconfig development files
 ,freetype,Font rendering engine and library API
 ,freetype-devel,Freetype development files
+,xz,XZ compression utilities
 ,elogind,Standalone logind fork
 ,glibc,GNU C library
 ,glibc-devel,GNU C library development files
