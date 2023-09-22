@@ -1,6 +1,6 @@
-# Chris Iñigo's Bootstrapping Script for Void Linux
+# A bootstrapping script for void linux (void-os)
 
-This is my bootstrapping script specifically for void linux.
+This is my bootstrapping script specifically for void linux. This is really just applied laziness.
 
 ## Requirements
 
@@ -11,7 +11,7 @@ This is my bootstrapping script specifically for void linux.
 ```
 git clone https://github.com/x1nigo/voidscript.git
 cd voidscript
-bash voidscript
+chmod +x void-os && ./void-os
 ```
 ## What does it install?
 Aside from the programs listed in `progs.csv`, the voidscript installs my configuration files and my other suckless software repositories:
