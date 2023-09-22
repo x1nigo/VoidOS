@@ -9,8 +9,8 @@ This is my bootstrapping script specifically for void linux. This is really just
 - Make sure you run this script as `root`.
 
 ```
-git clone https://github.com/x1nigo/voidscript.git
-cd voidscript
+git clone https://github.com/x1nigo/void-os.git
+cd void-os
 chmod +x void-os && ./void-os
 ```
 ## What does it install?
