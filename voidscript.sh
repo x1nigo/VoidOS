@@ -92,7 +92,7 @@ getdotfiles() {
 	dialog --infobox "Downloading and installing config files..." 7 60
 	sudo -u "$name" git -C "$repodir" clone "$dotfilesrepo" >/dev/null 2>&1
 	cd "$repodir"/dotfiles
-	shopt -s dotglob && sudo -u "$name" rsync * /home/$name/
+	shopt -s dotglob && sudo -u "$name" rsync -r * /home/$name/
 	# Install the file manager.
 	cd /home/$name/.config/lf && chmod +x lfrun scope cleaner && sudo -u "$name" mv lfrun /usr/bin
 	# Install gruvbox gtk theme for the system.
