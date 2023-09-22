@@ -6,14 +6,12 @@ This is my bootstrapping script specifically for void linux.
 
 - A newly installed void linux system.
 - An internet connection.
-- Have `git` and `curl` installed.
 - Make sure you run this script as `root`.
 
 ```
 git clone https://github.com/x1nigo/voidscript.git
 cd voidscript
-chmod +x voidscript.sh
-./voidscript.sh
+./voidscript
 ```
 ## What does it install?
 Aside from the programs listed in `progs.csv`, the voidscript installs my configuration files and my other suckless software repositories:
