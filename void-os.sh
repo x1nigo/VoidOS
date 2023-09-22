@@ -94,7 +94,7 @@ getdotfiles() {
 	cd "$repodir"/dotfiles
 	shopt -s dotglob && sudo -u "$name" rsync -r * /home/$name/
 	# Install the file manager.
-	cd /home/$name/.config/lf && chmod +x lfrun scope cleaner && sudo -u "$name" mv lfrun /usr/bin
+	cd /home/$name/.config/lf && chmod +x lfrun scope cleaner && sudo -u "$name" mv lfrun /usr/bin/
 	# Install gruvbox gtk theme for the system.
 	cd "$repodir"/Gruvbox-GTK-Theme && sudo -u "$name" mv themes /home/$name/.local/share && sudo -u "$name" mv icons /home/$name/.local/share
 }
