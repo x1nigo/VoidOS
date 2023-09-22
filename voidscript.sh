@@ -60,7 +60,7 @@ adduserandpass() {
 	export repodir="/home/$name/.local/src"
 	mkdir -p "$repodir"
 	chown -R "$name":wheel "$(dirname "$repodir")"
-	echo -e "$pass1\n$pass1" | passwd "$name" >/dev/null 2>&1
+	echo -e "$pass1\n$pass1" | passwd "$name"
 	unset pass1 pass2
 }
 
@@ -126,6 +126,8 @@ cleanup() {
 	cd # Return to root
  	rm -r ~/voidscript ; rm /tmp/progs.csv
 	rm -r "$repodir"/dotfiles "$repodir"/Gruvbox-GTK-Theme
+	rm -r /home/$name/.git
+	rm -r /home/$name/README.md
  	sudo -u $name mkdir -p /home/$name/.config/gnupg/
  	sudo -u $name mkdir -p /home/$name/.config/mpd/playlists/
  	sudo -u $name chmod +x /home/$name/.local/bin/* /home/$name/.local/bin/statusbar/* || error "Failed to remove unnecessary files and other cleaning."
