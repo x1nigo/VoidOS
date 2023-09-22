@@ -12,6 +12,7 @@ This is my bootstrapping script specifically for void linux.
 ```
 git clone https://github.com/x1nigo/voidscript.git
 cd voidscript
+chmod +x voidscript.sh
 ./voidscript.sh
 ```
 ## What does it install?

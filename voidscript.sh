@@ -17,9 +17,9 @@ error() {
 
 getdialog() {
 	echo "
-Just making sure that everything is ready and that \`dialog\`, etc. are installed on your system.
+Updating repositories and installing dependencies...
 "
-	xbps-install -Syu dialog curl rsync || "Failed to initiate proceedings."
+	xbps-install -Syu dialog curl rsync || "Failed to update repositories and install dependencies."
 }
 
 openingmsg() {
@@ -60,7 +60,7 @@ adduserandpass() {
 	export repodir="/home/$name/.local/src"
 	mkdir -p "$repodir"
 	chown -R "$name":wheel "$(dirname "$repodir")"
-	echo "$name:$pass1" | chpasswd
+	echo -e "$pass1\n$pass1" | passwd "$name"
 	unset pass1 pass2
 }
 
