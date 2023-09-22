@@ -19,7 +19,7 @@ getdialog() {
 	echo "
 Updating repositories and installing dependencies...
 "
-	xbps-install -Syu dialog curl rsync || "Failed to update repositories and install dependencies."
+	xbps-install -Syu dialog curl rsync || error "Failed to update repositories and install dependencies."
 }
 
 openingmsg() {
@@ -60,7 +60,7 @@ adduserandpass() {
 	export repodir="/home/$name/.local/src"
 	mkdir -p "$repodir"
 	chown -R "$name":wheel "$(dirname "$repodir")"
-	echo -e "$pass1\n$pass1" | passwd "$name"
+	echo -e "$pass1\n$pass1" | passwd "$name" >/dev/null 2>&1
 	unset pass1 pass2
 }
 
