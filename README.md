@@ -14,7 +14,7 @@ cd void-os
 chmod +x void-os && ./void-os
 ```
 ## What does it install?
-Aside from the programs listed in `progs.csv`, the voidscript installs my configuration files and my other suckless software repositories:
+Aside from the programs listed in `progs.csv`, void-os installs my configuration files and my other suckless software repositories:
 - [dotfiles](https://github.com/x1nigo/dotfiles) &ndash; My dotfiles
 - [dwm](https://github.com/x1nigo/dwm) &ndash; The window manager
 - [st](https://github.com/x1nigo/st) &ndash; The terminal emulator
