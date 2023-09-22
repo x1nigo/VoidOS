@@ -147,7 +147,6 @@ depower() {
 	echo "%wheel ALL=(ALL:ALL) NOPASSWD: /usr/bin/shutdown,/usr/bin/poweroff,/usr/bin/reboot,/usr/bin/su,/usr/bin/make clean install,/usr/bin/xbps-install -Su,/usr/bin/xbps-install -S,/usr/bin/xbps-install -u,/usr/bin/mount,/usr/bin/umount,/usr/bin/cryptsetup,/usr/bin/simple-mtpfs,/usr/bin/fusermount" > /etc/sudoers.d/01-no-password-commands
 } || error "Could not bring back user from his God-like throne of sudo privilege."
 
-
 ### Main Function ###
 
 # Installs dialog program to run alongside this script.
@@ -191,5 +190,6 @@ changeshell
 
 # De-power the user from infinite greatness.
 depower
+
 # The closing message.
 finalize
