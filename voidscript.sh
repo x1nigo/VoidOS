@@ -76,7 +76,7 @@ finalize () {
 
 installpkgs() {
 	curl -Ls "$progsfile" > /tmp/progs.csv
-	total=$(( $(wc -l < ~/voidscript/progs.csv) -1 ))
+	total=$(( $(wc -l < /tmp/progs.csv) -1 ))
 	n=0
 	while IFS="," read -r tag program description
 	do
@@ -92,7 +92,7 @@ getdotfiles() {
 	dialog --infobox "Downloading and installing config files..." 7 60
 	sudo -u "$name" git -C "$repodir" clone "$dotfilesrepo" >/dev/null 2>&1
 	cd "$repodir"/dotfiles
-	shopt -s dotglob && sudo -u "$name" rsync * /home/$name
+	shopt -s dotglob && sudo -u "$name" rsync * /home/$name/
 	# Install the file manager.
 	cd /home/$name/.config/lf && chmod +x lfrun scope cleaner && sudo -u "$name" mv lfrun /usr/bin
 	# Install gruvbox gtk theme for the system.
@@ -125,8 +125,8 @@ removebeep() {
 cleanup() {
 	cd # Return to root
  	rm -r ~/voidscript ; rm /tmp/progs.csv
-	rm -r /home/$name/dotfiles
- 	sudo -u $name mkdir /home/$name/.config/gnupg/
+	rm -r "$repodir"/dotfiles "$repodir"/Gruvbox-GTK-Theme
+ 	sudo -u $name mkdir -p /home/$name/.config/gnupg/
  	sudo -u $name mkdir -p /home/$name/.config/mpd/playlists/
  	sudo -u $name chmod +x /home/$name/.local/bin/* /home/$name/.local/bin/statusbar/* || error "Failed to remove unnecessary files and other cleaning."
 }
