@@ -60,7 +60,7 @@ adduserandpass() {
 	export repodir="/home/$name/.local/src"
 	mkdir -p "$repodir"
 	chown -R "$name":wheel "$(dirname "$repodir")"
-	echo -e "$pass1\n$pass1" | passwd "$name"
+	echo -e "$pass1\n$pass1" | passwd "$name" >/dev/null 2>&1
 	unset pass1 pass2
 }
 
