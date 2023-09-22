@@ -11,7 +11,7 @@ This is my bootstrapping script specifically for void linux.
 ```
 git clone https://github.com/x1nigo/voidscript.git
 cd voidscript
-./voidscript
+bash voidscript
 ```
 ## What does it install?
 Aside from the programs listed in `progs.csv`, the voidscript installs my configuration files and my other suckless software repositories:
