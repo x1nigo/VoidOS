@@ -64,7 +64,6 @@ TAG,NAME IN REPO (or git url),DESCRIPTION(a short description about the program)
 ,harfbuzz,OpenType text shaping engine
 ,harfbuzz-devel,harfbuzz development files
 G,https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme,Gruvbox gtk theme for the system
-G,https://github.com/x1nigo/dotfiles.git,My personal configuration files
 G,https://github.com/x1nigo/dwm.git,The suckless dynamic window manager
 G,https://github.com/x1nigo/st.git,The simple terminal
 G,https://github.com/x1nigo/dmenu.git,The dynamic menu
