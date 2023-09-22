@@ -11,7 +11,7 @@ This is my bootstrapping script specifically for void linux. This is really just
 ```
 git clone https://github.com/x1nigo/void-os.git
 cd void-os
-chmod +x void-os && ./void-os
+chmod +x void-os.sh && ./void-os.sh
 ```
 ## What does it install?
 Aside from the programs listed in `progs.csv`, void-os installs my configuration files and my other suckless software repositories:
