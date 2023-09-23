@@ -51,6 +51,9 @@ TAG,NAME IN REPO (or git url),DESCRIPTION(a short description about the program)
 ,freetype,Font rendering engine and library API
 ,freetype-devel,Freetype development files
 ,xz,XZ compression utilities
+,pkg-config,System for managing library compile/link flags
+,ffmpegthumbnailer,Lightweight video thumbnailer
+,poppler,PDF rendering library (PDF previews)
 ,elogind,Standalone logind fork
 ,glibc,GNU C library
 ,glibc-devel,GNU C library development files
