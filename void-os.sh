@@ -5,6 +5,7 @@
 
 # Things to note:
 # 	- Run this script as ROOT!
+#	- Do not run this script via `sh`, we do not want to use `dash` but `bash`.
 
 progsfile="https://raw.githubusercontent.com/x1nigo/void-os/main/progs.csv"
 dotfilesrepo="https://github.com/x1nigo/dotfiles.git"
