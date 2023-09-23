@@ -25,6 +25,7 @@ TAG,NAME IN REPO (or git url),DESCRIPTION(a short description about the program)
 ,yt-dlp,Allows you to download media from YouTube
 ,xorg,An X11R7 server
 ,xdg-user-dirs,Helps manage user directories
+,xdg-utils,Tools to assist applications with various desktop integration tasks
 ,gnome-keyring,Stores secrets/passwords/keys/certs for applications
 ,dejavu-fonts-ttf,DejaVu family of TrueType fonts
 ,font-libertine-ttf,Libertine TTF Fonts - Libre multilingual font family
