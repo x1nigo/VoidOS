@@ -1,4 +1,4 @@
-TAG,NAME IN REPO (or git url),DESCRIPTION(a short description about the program)
+#TAG,NAME IN REPO (or git url),DESCRIPTION (a short description about the program)
 ,sxiv,The simple X image viewer
 ,zathura,A document viewer
 ,zathura-pdf-mupdf,Support for PDF and similar documents
