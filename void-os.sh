@@ -136,6 +136,8 @@ cleanup() {
 }
 
 changeshell() {
+	# Make sure the user's shell is `zsh` and root's is `bash`.
+	chsh -s /bin/bash >/dev/null 2>&1
 	chsh -s /bin/zsh $name >/dev/null 2>&1
 	echo "# .bashrc
 
