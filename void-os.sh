@@ -20,7 +20,8 @@ getdialog() {
 	echo "
 Updating repositories and installing dependencies...
 "
-	xbps-install -Syu dialog curl rsync || error "Failed to update repositories and install dependencies."
+	xbps-install -Syu # Sync and upgrade all packages before starting the main script.
+	xbps-install -y dialog curl rsync || error "Failed to update repositories and install dependencies."
 }
 
 openingmsg() {
