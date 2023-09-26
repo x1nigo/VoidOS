@@ -1,6 +1,6 @@
-# A bootstrapping script for void linux (void-os)
+# Void-OS
 
-This is my bootstrapping script specifically for void linux. This is really just applied laziness.
+This is my bootstrapping script for void linux.
 
 ## Requirements
 
