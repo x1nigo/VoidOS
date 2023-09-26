@@ -147,7 +147,7 @@ changeshell() {
 	echo "# .bashrc
 
 alias ls='ls --color=auto'
-PS1='\[\e[1;31m[\u@\h \W]\e[0m\]\$ '" > ~/.bashrc || error "Could not change shell for the user."
+PS1='\[\e[1;31m[\u@\h \W]\$\e[0m\] '" > ~/.bashrc || error "Could not change shell for the user."
 }
 
 depower() {
