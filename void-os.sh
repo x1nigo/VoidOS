@@ -77,15 +77,16 @@ finalize () {
 ### Main Installation ###
 
 installpkgs() {
-	curl -Ls "$progsfile" > /tmp/progs.csv
-	total=$(( $(wc -l < /tmp/progs.csv) -1 ))
+	curl -Ls "$progsfile" | sed '/^#/d' > /tmp/progs.csv
+	total=$(( $(wc -l < /tmp/progs.csv) ))
 	n=0
 	while IFS="," read -r tag program description
 	do
+		n=$(( n + 1 ))
 		dialog --infobox "Installing \`$program\` ($n of $total). $description." 8 70
 		case $tag in
-			G) n=$(( n + 1 )) && sudo -u $name git -C "$repodir" clone "$program" >/dev/null 2>&1 ;;
-			*) n=$(( n + 1 )) && xbps-install -y "$program" >/dev/null 2>&1 ;;
+			G) sudo -u $name git -C "$repodir" clone "$program" >/dev/null 2>&1 ;;
+			*) xbps-install -y "$program" >/dev/null 2>&1 ;;
 		esac
 	done < /tmp/progs.csv
 }
