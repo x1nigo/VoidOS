@@ -7,6 +7,7 @@
 ,picom,Compositor for X11
 ,xwallpaper,A wallpaper setting utility for X
 ,lf,A terminal file manager
+,fff,Simple file manager written in bash
 ,dunst,A lightweight notification-daemon
 ,libnotify,Library for sending desktop notifications
 ,mpd,A music player daemon
