@@ -103,7 +103,6 @@ getdotfiles() {
 	# Link specific filed to home directory.
 	ln -sf /home/$name/.config/x11/xprofile /home/$name/.xprofile
 	ln -sf /home/$name/.config/shell/profile /home/$name/.zprofile
-	ln -sf /home/$name/.config/gtk-2.0/gtkrc-2.0 /home/$name/.gtkrc-2.0
 }
 
 updateudev() {
