@@ -24,7 +24,8 @@
 ,bluez,Daemon for bluetooth
 ,libspa-bluetooth,To enable bluetooth compatibility with pipewire
 ,yt-dlp,Allows you to download media from YouTube
-,xorg,An X11R7 server
+,xorg-minimal,Xorg meta-package including xorg-xserver
+,xinit,X init program
 ,xdg-user-dirs,Helps manage user directories
 ,xdg-utils,Tools to assist applications with various desktop integration tasks
 ,gnome-keyring,Stores secrets/passwords/keys/certs for applications
