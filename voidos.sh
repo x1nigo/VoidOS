@@ -155,7 +155,8 @@ changeshell() {
 	echo "# .bashrc
 
 alias ls='ls --color=auto'
-PS1=\"\[\e[1;34m\]\W\[\e[0m\] \[\e[1;31m\]>\[\e[0m\] \"" > ~/.bashrc || error "Could not change shell for the user."
+PS1=\"\[\e[1;31m\]\u \[\e[0m\]on \[\e[1;35m\]\h \[\e[1;34m\]\w
+\[\e[1;31m\]>\[\e[0m\] \"" > ~/.bashrc || error "Could not change shell for the user."
 }
 
 depower() {
