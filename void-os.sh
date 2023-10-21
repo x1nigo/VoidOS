@@ -135,6 +135,8 @@ cleanup() {
 	rm -r /home/$name/.git
 	rm -r /home/$name/README.md
  	sudo -u $name mkdir -p /home/$name/.config/gnupg/
+  	find /home/$name/.config/gnupg -type f -exec chmod 600 {} \;
+	find /home/$name/.config/gnupg -type d -exec chmod 700 {} \;
  	sudo -u $name mkdir -p /home/$name/.config/mpd/playlists/
  	sudo -u $name chmod +x /home/$name/.local/bin/* /home/$name/.local/bin/statusbar/* || error "Failed to remove unnecessary files and other cleaning."
 }
@@ -146,8 +148,7 @@ changeshell() {
 	echo "# .bashrc
 
 alias ls='ls --color=auto'
-PS1='\[\e[1;31m[\u at \h in \W]
-\\$\e[0m\] '" > ~/.bashrc || error "Could not change shell for the user."
+PS1=\"\[\e[1;34m\]\W\[\e[0m\] \[\e[1;31m\]>\[\e[0m\] \"" > ~/.bashrc || error "Could not change shell for the user."
 }
 
 depower() {
