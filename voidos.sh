@@ -104,8 +104,8 @@ getdotfiles() {
 	shopt -s dotglob && sudo -u "$name" rsync -r * /home/$name/
 	# Install the file manager.
 	cd /home/$name/.config/lf && chmod +x lfrun scope cleaner && mv lfrun /usr/bin/
-	# Install gruvbox gtk theme for the system.
-	cd "$repodir"/Gruvbox-GTK-Theme && sudo -u "$name" mv themes /home/$name/.local/share && sudo -u "$name" mv icons /home/$name/.local/share
+	# Install Tokyo Night GTK theme for the system.
+	cd "$repodir"/Tokyo-Night-GTK-Theme && sudo -u "$name" mv themes /home/$name/.local/share && sudo -u "$name" mv icons /home/$name/.local/share
 	# Link specific filed to home directory.
 	ln -sf /home/$name/.config/x11/xprofile /home/$name/.xprofile
 	ln -sf /home/$name/.config/shell/profile /home/$name/.zprofile
@@ -137,7 +137,7 @@ removebeep() {
 cleanup() {
 	cd # Return to root
  	rm -r ~/voidos ; rm /tmp/progs.csv
-	rm -r "$repodir"/dotfiles "$repodir"/Gruvbox-GTK-Theme
+	rm -r "$repodir"/dotfiles "$repodir"/Tokyo-Night-GTK-Theme
 	rm -r /home/$name/.git
 	rm -r /home/$name/README.md
  	sudo -u $name mkdir -p /home/$name/.config/gnupg/
