@@ -71,6 +71,7 @@
 ,libXft-devel,libXft development files
 ,ncurses,System V curses emulation library
 ,ncurses-devel,ncurses development files
+,gcr-devel,GNOME crpyto package - development files
 ,webkit2gtk,GTK+3 port of the WebKit browser engine
 ,webkit2gtk-common,common files for the webkit engine
 ,webkit2gtk-devel,development files for the webkit engine
