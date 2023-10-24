@@ -9,6 +9,7 @@
 ,lf,A terminal file manager
 ,fff,Simple file manager written in bash
 ,dunst,A lightweight notification-daemon
+,firefox,Just a web browser by Mozilla
 ,libnotify,Library for sending desktop notifications
 ,mpd,A music player daemon
 ,ncmpcpp,An ncurses music player daemon client
@@ -54,6 +55,7 @@
 ,freetype,Font rendering engine and library API
 ,freetype-devel,Freetype development files
 ,xz,XZ compression utilities
+,7zip,File archiver with a high compression ratio
 ,groff,GNU troff text-formatting system
 ,pkg-config,System for managing library compile/link flags
 ,ueberzug,Command line util which allows drawing images on terminals
@@ -71,13 +73,8 @@
 ,libXft-devel,libXft development files
 ,ncurses,System V curses emulation library
 ,ncurses-devel,ncurses development files
-,gcr-devel,GNOME crpyto package - development files
-,webkit2gtk,GTK+3 port of the WebKit browser engine
-,webkit2gtk-common,common files for the webkit engine
-,webkit2gtk-devel,development files for the webkit engine
 G,https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme,Tokyo Night GTK theme for the system
 G,https://github.com/x1nigo/dwm.git,The suckless dynamic window manager
 G,https://github.com/x1nigo/st.git,The simple terminal
 G,https://github.com/x1nigo/dmenu.git,The dynamic menu
-G,https://github.com/x1nigo/surf.git,The suckless browser
 G,https://github.com/x1nigo/dwmblocks.git,Modular status bar for dwm written in C
