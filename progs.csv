@@ -73,7 +73,7 @@
 ,libXft-devel,libXft development files
 ,ncurses,System V curses emulation library
 ,ncurses-devel,ncurses development files
-G,https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme,Tokyo Night GTK theme for the system
+G,https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme,Gruvbox GTK theme for the system
 G,https://github.com/x1nigo/dwm.git,The suckless dynamic window manager
 G,https://github.com/x1nigo/st.git,The simple terminal
 G,https://github.com/x1nigo/dmenu.git,The dynamic menu
