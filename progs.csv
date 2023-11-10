@@ -6,10 +6,10 @@
 ,ffmpeg,A video converter
 ,picom,Compositor for X11
 ,xwallpaper,A wallpaper setting utility for X
-,lf,A terminal file manager
-,fff,Simple file manager written in bash
+,lf,A terminal file manager written in Go
+,fff,The fucking fast file-manager written in bash
 ,dunst,A lightweight notification-daemon
-,firefox,Just a web browser by Mozilla
+,chromium,An alternative free and open-source browser to Google's Chrome
 ,libnotify,Library for sending desktop notifications
 ,mpd,A music player daemon
 ,ncmpcpp,An ncurses music player daemon client
