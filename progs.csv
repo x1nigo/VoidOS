@@ -17,7 +17,6 @@
 ,newsboat,An RSS/Atom feed reader for terminals
 ,transmission,A torrent client for the terminal
 ,stig,A curses interface for transmission-daemon
-,NetworkManager,Network Management daemon
 ,pipewire,A program to enable audio
 ,wireplumber,Session manager implementation for pipewire
 ,sof-firmware,Sound open firmware for audio
@@ -34,9 +33,6 @@
 ,font-libertine-ttf,Libertine TTF Fonts - Libre multilingual font family
 ,noto-fonts-ttf,Google Noto TTF Fonts
 ,noto-fonts-emoji,Google Noto Emoji Fonts
-,zsh,The Zoomer Shell
-,zsh-autosuggestions,Fish-like autosuggestions for zsh
-,zsh-syntax-highlighting,Fish shell like syntax highlighting for zsh
 ,maim,Utility that takes a screenshot of your desktop
 ,xcape,Modifies keys to act as other keys when pressed/released
 ,unzip,Unzip zipped files
