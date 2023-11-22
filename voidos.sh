@@ -124,7 +124,7 @@ EndSection" > /etc/X11/xorg.conf.d/30-touchpad.conf || error "Failed to update t
 
 compiless() {
 	dialog --infobox "Compiling suckless software..." 7 40
-	for dir in $(echo "dwm st dmenu surf dwmblocks"); do
+	for dir in $(echo "dwm st dmenu dwmblocks"); do
 		cd "$repodir"/"$dir" && sudo make clean install >/dev/null 2>&1
 	done
 }
