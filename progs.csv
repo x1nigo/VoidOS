@@ -8,8 +8,8 @@
 ,xwallpaper,A wallpaper setting utility for X
 ,lf,A terminal file manager written in Go
 ,fff,The fucking fast file-manager written in bash
+,firefox,A web browser by Mozilla
 ,dunst,A lightweight notification-daemon
-,chromium,An alternative free and open-source browser to Google's Chrome
 ,libnotify,Library for sending desktop notifications
 ,mpd,A music player daemon
 ,ncmpcpp,An ncurses music player daemon client

@@ -150,11 +150,7 @@ cleanup() {
 
 changeshell() {
 	chsh -s /bin/bash >/dev/null 2>&1
-	echo "# .bashrc
-
-alias ls='ls --color=auto'
-PS1=\"\[\e[1;31m\][\u \[\e[0m\]on \[\e[1;35m\]\h \[\e[1;34m\]\w\[\e[1;31m\]]\[\e[0m\]
--\[\e[31m\]&\[\e[0m\] \""> ~/.bashrc || error "Could not change shell for the user."
+	chsh -s /bin/zsh $name >/dev/null 2>&1
 }
 
 depower() {
@@ -202,7 +198,7 @@ removebeep
 cleanup
 
 # Change shell of the user to `zsh`.
-changeshell
+changeshell || error "Could not change shell for the user."
 
 # De-power the user from infinite greatness.
 depower || error "Could not bring back user from his God-like throne of sudo privilege."
