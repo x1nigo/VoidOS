@@ -151,6 +151,11 @@ cleanup() {
 changeshell() {
 	chsh -s /bin/bash >/dev/null 2>&1
 	chsh -s /bin/zsh $name >/dev/null 2>&1
+	echo "# .bashrc
+
+alias ls='ls --color=auto'
+PS1=\"\[\e[1;31m\]\u@\h \[\e[1;34m\]\w\[\e[0m\]
+-\[\e[1;31m\]&\[\e[0m\] \""> ~/.bashrc || error "Could not change shell for the user."
 }
 
 depower() {
