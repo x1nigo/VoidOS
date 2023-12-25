@@ -52,6 +52,9 @@
 ,freetype-devel,Freetype development files
 ,xz,XZ compression utilities
 ,7zip,File archiver with a high compression ratio
+,zsh,The zoomer shell
+,zsh-autosuggestions,Tab completion for zsh
+,zsh-syntax-highlighting,Colored commands for the terminal
 ,groff,GNU troff text-formatting system
 ,pkg-config,System for managing library compile/link flags
 ,ueberzug,Command line util which allows drawing images on terminals

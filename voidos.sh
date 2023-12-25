@@ -103,12 +103,12 @@ getdotfiles() {
 	cd "$repodir"/dotfiles
 	shopt -s dotglob && sudo -u "$name" rsync -r * /home/$name/
 	# Install the file manager.
-	cd /home/$name/.config/lf && chmod +x lfrun scope cleaner && mv lfrun /usr/bin/
+	cd /home/$name/.config/lf && chmod +x lfx scope cleaner && mv lfx /usr/local/bin/
 	# Install Gruvbox GTK theme for the system.
 	cd "$repodir"/Gruvbox-GTK-Theme && sudo -u "$name" mv themes /home/$name/.local/share && sudo -u "$name" mv icons /home/$name/.local/share
 	# Link specific filed to home directory.
 	ln -sf /home/$name/.config/x11/xprofile /home/$name/.xprofile
-	ln -sf /home/$name/.config/shell/profile /home/$name/.zprofile
+	ln -sf /home/$name/.config/shell/profile /home/$name/.profile
 }
 
 updateudev() {
@@ -145,17 +145,12 @@ cleanup() {
   	find /home/$name/.config/gnupg -type f -exec chmod 600 {} \;
 	find /home/$name/.config/gnupg -type d -exec chmod 700 {} \;
  	sudo -u $name mkdir -p /home/$name/.config/mpd/playlists/
- 	sudo -u $name chmod +x /home/$name/.local/bin/* /home/$name/.local/bin/statusbar/* || error "Failed to remove unnecessary files and other cleaning."
+ 	sudo -u $name chmod -R +x /home/$name/.local/bin || error "Failed to remove unnecessary files and other cleaning."
 }
 
 changeshell() {
 	chsh -s /bin/bash >/dev/null 2>&1
-	chsh -s /bin/zsh $name >/dev/null 2>&1
-	echo "# .bashrc
-
-alias ls='ls --color=auto'
-PS1=\"\[\e[1;31m\]\u@\h \[\e[1;34m\]\w\[\e[0m\]
--\[\e[1;31m\]&\[\e[0m\] \""> ~/.bashrc || error "Could not change shell for the user."
+	chsh -s /bin/zsh $name >/dev/null 2>&1 || error "Could not change shell for the user."
 }
 
 depower() {
