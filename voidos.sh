@@ -108,7 +108,7 @@ getdotfiles() {
 	cd "$repodir"/Gruvbox-GTK-Theme && sudo -u "$name" mv themes /home/$name/.local/share && sudo -u "$name" mv icons /home/$name/.local/share
 	# Link specific filed to home directory.
 	ln -sf /home/$name/.config/x11/xprofile /home/$name/.xprofile
-	ln -sf /home/$name/.config/shell/profile /home/$name/.profile
+	ln -sf /home/$name/.config/shell/profile /home/$name/.zprofile
 }
 
 updateudev() {
