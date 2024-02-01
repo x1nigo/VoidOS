@@ -10,7 +10,7 @@
 ,fff,The fucking fast file-manager written in bash
 ,firefox,A web browser by Mozilla
 ,dunst,A lightweight notification-daemon
-,libnotify,Library for sending desktop notifications
+,libnotify-bin, Allows notifications to occur
 ,mpd,A music player daemon
 ,ncmpcpp,An ncurses music player daemon client
 ,mpc,Command-line client for mpd
