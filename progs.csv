@@ -8,7 +8,7 @@
 ,xwallpaper,A wallpaper setting utility for X
 ,lf,A terminal file manager written in Go
 ,fff,The fucking fast file-manager written in bash
-,firefox,A web browser by Mozilla
+,chromium,Web browser from Google
 ,dunst,A lightweight notification-daemon
 ,libnotify-bin, Allows notifications to occur
 ,mpd,A music player daemon
@@ -72,8 +72,3 @@
 ,libXft-devel,libXft development files
 ,ncurses,System V curses emulation library
 ,ncurses-devel,ncurses development files
-G,https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme,Gruvbox GTK theme for the system
-G,https://github.com/x1nigo/dwm.git,The suckless dynamic window manager
-G,https://github.com/x1nigo/st.git,The simple terminal
-G,https://github.com/x1nigo/dmenu.git,The dynamic menu
-G,https://github.com/x1nigo/dwmblocks.git,Modular status bar for dwm written in C
