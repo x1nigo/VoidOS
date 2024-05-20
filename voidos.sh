@@ -63,8 +63,7 @@ preinstallmsg() {
 adduserandpass() {
 	# Adds user `$name` with password $pass1.
 	dialog --infobox "Adding user \"$name\"..." 7 50
-	useradd -m -g wheel -s /bin/zsh "$name" >/dev/null 2>&1 ||
-		usermod -a -G wheel "$name" && mkdir -p /home/"$name" && chown "$name":wheel /home/"$name"
+	useradd -m -g wheel -s /bin/zsh "$name" >/dev/null 2>&1
 	export repodir="/home/$name/.local/src"
 	mkdir -p "$repodir"
 	chown -R "$name":wheel "$(dirname "$repodir")"
