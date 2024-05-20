@@ -72,3 +72,8 @@
 ,libXft-devel,libXft development files
 ,ncurses,System V curses emulation library
 ,ncurses-devel,ncurses development files
+,https://github.com/x1nigo/dwm.git,The suckless window manager
+,https://github.com/x1nigo/st.git,The simple terminal
+,https://github.com/x1nigo/dmenu.git,The dynamic menu
+,https://github.com/x1nigo/slstatus.git,The suckless statusbar
+,https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme,The gruvbox GTK theme for system
