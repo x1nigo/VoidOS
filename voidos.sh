@@ -107,7 +107,7 @@ getdotfiles() {
 	cd "$repodir"/Gruvbox-GTK-Theme && sudo -u "$name" mv themes /home/$name/.local/share && sudo -u "$name" mv icons /home/$name/.local/share
 	# Link specific filed to home directory.
 	ln -sf /home/$name/.config/x11/xprofile /home/$name/.xprofile
-	ln -sf /home/$name/.config/shell/zprofile /home/$name/.zprofile
+	ln -sf /home/$name/.config/shell/zprofile /home/$name/.profile
 }
 
 updateudev() {
@@ -149,7 +149,10 @@ cleanup() {
 
 changeshell() {
 	chsh -s /bin/bash >/dev/null 2>&1
-	chsh -s /bin/zsh $name >/dev/null 2>&1 || error "Could not change shell for the user."
+	chsh -s /bin/bash $name >/dev/null 2>&1
+ 	echo "
+# Source the .profile file.
+[ -f $HOME/.profile ] && . $HOME/.profile " >> /home/$name/.bash_profile || error "Could not change shell for the user."
 }
 
 depower() {
