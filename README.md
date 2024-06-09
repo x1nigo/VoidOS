@@ -17,5 +17,3 @@ Aside from the programs listed in `progs.csv`, void-os installs my configuration
 - [dwm](https://github.com/x1nigo/dwm) &ndash; The window manager
 - [st](https://github.com/x1nigo/st) &ndash; The terminal emulator
 - [dmenu](https://github.com/x1nigo/dmenu) &ndash; The dynamic menu launcher
-- [surf](https://github.com/x1nigo/surf) &ndash; The suckless web browser
-- [dwmblocks](https://github.com/x1nigo/dwmblocks) &ndash; The status bar
