@@ -1,5 +1,5 @@
 #TAG,NAME IN REPO (or git url),DESCRIPTION (a short description about the program)
-,sxiv,The simple X image viewer
+,nsxiv,The simple X image viewer
 ,zathura,A document viewer
 ,zathura-pdf-mupdf,Support for PDF and similar documents
 ,mpv,A terminal media player
@@ -8,7 +8,7 @@
 ,xwallpaper,A wallpaper setting utility for X
 ,lf,A terminal file manager written in Go
 ,fff,The fucking fast file-manager written in bash
-,chromium,Web browser from Google
+,firefox,Web browser from Mozilla
 ,dunst,A lightweight notification-daemon
 ,libnotify-bin, Allows notifications to occur
 ,mpd,A music player daemon
@@ -72,5 +72,3 @@
 G,https://github.com/x1nigo/dwm.git,The suckless window manager
 G,https://github.com/x1nigo/st.git,The simple terminal
 G,https://github.com/x1nigo/dmenu.git,The dynamic menu
-G,https://github.com/x1nigo/slstatus.git,The suckless statusbar
-G,https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme,The gruvbox GTK theme for system

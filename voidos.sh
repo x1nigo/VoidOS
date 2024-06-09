@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # __     __    _     _  ___  ____
 # \ \   / /__ (_) __| |/ _ \/ ___|
@@ -7,13 +7,12 @@
 #    \_/ \___/|_|\__,_|\___/|____/
 
 # Chris Iñigo's Bootstrapping Script for Void Linux
-# by Chris Iñigo <chris@x1nigo.xyz>
+# by Chris Iñigo <https://github.com/x1nigo/voidos.git>
 
 # Things to note:
 # 	- Run this script as ROOT!
 #	- Do not run this script via `sh`, we do not want to use `dash` but `bash`.
 
-progsfile="https://raw.githubusercontent.com/x1nigo/voidos/main/progs.csv"
 dotfilesrepo="https://github.com/x1nigo/dotfiles.git"
 
 error() {
@@ -82,18 +81,18 @@ finalize () {
 ### Main Installation ###
 
 installpkgs() {
-	curl -Ls "$progsfile" | sed '/^#/d' > /tmp/progs.csv
-	total=$(( $(wc -l < /tmp/progs.csv) ))
+	sed -i '/^#/d' progs.csv
+	total=$(( $(wc -l < progs.csv) ))
 	n=0
-	while IFS="," read -r tag program description
+	while IFS=, read -r tag program description
 	do
-		n=$(( n + 1 ))
+		((n++))
 		dialog --infobox "Installing \`$program\` ($n of $total). $description." 8 70
 		case $tag in
 			G) sudo -u $name git -C "$repodir" clone "$program" >/dev/null 2>&1 ;;
 			*) xbps-install -y "$program" >/dev/null 2>&1 ;;
 		esac
-	done < /tmp/progs.csv
+	done < progs.csv
 }
 
 getdotfiles() {
@@ -101,13 +100,7 @@ getdotfiles() {
 	sudo -u "$name" git -C "$repodir" clone "$dotfilesrepo" >/dev/null 2>&1
 	cd "$repodir"/dotfiles
 	shopt -s dotglob && sudo -u "$name" rsync -r * /home/$name/
-	# Install the file manager.
-	cd /home/$name/.config/lf && chmod +x lfx scope cleaner && mv lfx /usr/local/bin/
-	# Install Gruvbox GTK theme for the system.
-	cd "$repodir"/Gruvbox-GTK-Theme && sudo -u "$name" mv themes /home/$name/.local/share && sudo -u "$name" mv icons /home/$name/.local/share
-	# Link specific filed to home directory.
-	ln -sf /home/$name/.config/x11/xprofile /home/$name/.xprofile
-	ln -sf /home/$name/.config/shell/zprofile /home/$name/.profile
+	ln -sf /home/$name/.config/shell/shrc /home/$name/.shrc
 }
 
 updateudev() {
@@ -123,7 +116,7 @@ EndSection" > /etc/X11/xorg.conf.d/30-touchpad.conf || error "Failed to update t
 
 compiless() {
 	dialog --infobox "Compiling suckless software..." 7 40
-	for dir in $(echo "dwm st dmenu slstatus"); do
+	for dir in $(echo "dwm st dmenu"); do
 		cd "$repodir"/"$dir" && sudo make clean install >/dev/null 2>&1
 	done
 }
@@ -135,8 +128,8 @@ removebeep() {
 
 cleanup() {
 	cd # Return to root
- 	rm -r ~/voidos ; rm /tmp/progs.csv
-	rm -r "$repodir"/dotfiles "$repodir"/Gruvbox-GTK-Theme
+ 	rm -r ~/voidos
+	rm -r "$repodir"/dotfiles
 	rm -r /home/$name/.git
 	rm -r /home/$name/README.md
  	sudo -u $name mkdir -p /home/$name/.config/gnupg/
