@@ -26,7 +26,7 @@ getdialog() {
 Updating repositories and installing dependencies...
 "
 	xbps-install -Syu # Sync and upgrade all packages before starting the main script.
-	xbps-install -y dialog curl rsync make || error "Failed to update repositories and install dependencies."
+	xbps-install -y dialog rsync make || error "Failed to update repositories and install dependencies."
 }
 
 openingmsg() {
@@ -100,7 +100,11 @@ getdotfiles() {
 	sudo -u "$name" git -C "$repodir" clone "$dotfilesrepo" >/dev/null 2>&1
 	cd "$repodir"/dotfiles
 	shopt -s dotglob && sudo -u "$name" rsync -r * /home/$name/
+ 	# Link the .shrc file
 	ln -sf /home/$name/.config/shell/shrc /home/$name/.shrc
+ 	cp /home/$name/.shrc /home/$name/.bashrc
+  	# Create a .vimrc file from the neovim configuration
+   	ln -s /home/$name/.config/nvim/init.vim /home/$name/.vimrc
 }
 
 updateudev() {
@@ -116,7 +120,7 @@ EndSection" > /etc/X11/xorg.conf.d/30-touchpad.conf || error "Failed to update t
 
 compiless() {
 	dialog --infobox "Compiling suckless software..." 7 40
-	for dir in $(echo "dwm st dmenu slstatus"); do
+	for dir in $(echo "dwm st dmenu"); do
 		cd "$repodir"/"$dir" && sudo make clean install >/dev/null 2>&1
 	done
 }
