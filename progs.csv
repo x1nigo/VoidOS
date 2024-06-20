@@ -8,7 +8,7 @@
 ,xwallpaper,A wallpaper setting utility for X
 ,lf,A terminal file manager written in Go
 ,fff,The fucking fast file-manager written in bash
-,firefox,Web browser from Mozilla
+,chromium,Web browser from Google
 ,dunst,A lightweight notification-daemon
 ,libnotify-bin, Allows notifications to occur
 ,mpd,A music player daemon
@@ -72,4 +72,3 @@
 G,https://github.com/x1nigo/dwm.git,The suckless window manager
 G,https://github.com/x1nigo/st.git,The simple terminal
 G,https://github.com/x1nigo/dmenu.git,The dynamic menu
-G,https://github.com/x1nigo/slstatus.git,The suckless statusbar
