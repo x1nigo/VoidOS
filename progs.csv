@@ -29,6 +29,7 @@
 ,xdg-user-dirs,Helps manage user directories
 ,xdg-utils,Tools to assist applications with various desktop integration tasks
 ,gnome-keyring,Stores secrets/passwords/keys/certs for applications
+,terminus-font,Cool looking font for terminal
 ,dejavu-fonts-ttf,DejaVu family of TrueType fonts
 ,font-libertine-ttf,Libertine TTF Fonts - Libre multilingual font family
 ,noto-fonts-ttf,Google Noto TTF Fonts
