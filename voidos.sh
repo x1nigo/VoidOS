@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-# __     __    _     _  ___  ____
-# \ \   / /__ (_) __| |/ _ \/ ___|
-#  \ \ / / _ \| |/ _` | | | \___ \
-#   \ V / (_) | | (_| | |_| |___) |
-#    \_/ \___/|_|\__,_|\___/|____/
-
 # Chris Iñigo's Bootstrapping Script for Void Linux
 # by Chris Iñigo <https://github.com/x1nigo/voidos.git>
 
@@ -21,73 +15,63 @@ error() {
 	exit 1
 }
 
-getdialog() {
+getupdate() {
 	echo "
 Updating repositories and installing dependencies...
 "
 	xbps-install -Syu # Sync and upgrade all packages before starting the main script.
-	xbps-install -y dialog rsync make || error "Failed to update repositories and install dependencies."
+	xbps-install -y rsync make || error "Failed to update repositories and install dependencies."
 }
 
-openingmsg() {
-	dialog --title "Introduction" \
-		--msgbox "Welcome to Chris Iñigo's Bootstrapping Script for Void Linux! This will install a fully-functioning linux desktop, which I hope may prove useful to you as it did for me.\\n\\n-Chris" 12 60 || error "Failed to show opening message."
+openingmsg() { cat << EOF
+
+Welcome!
+
+This script will install a fully-functioning linux desktop, which I hope may prove useful to you as it did for me.
+
+EOF
+
+printf "%s" "Press \`enter\` to continue"
+read -r enter
 }
 
 getuserandpass(){
 	# Prompts user for new username an password.
-	name=$(dialog --inputbox "First, please enter a name for the user account." 10 60 3>&1 1>&2 2>&3 3>&1) || exit 1
-	while ! echo "$name" | grep -q "^[a-z_][a-z0-9_-]*$"; do
-		name=$(dialog --nocancel --inputbox "Username not valid. Give a name beginning with a letter, with only lowercase letters, - or _." 10 60 3>&1 1>&2 2>&3 3>&1)
-	done
-	pass1=$(dialog --nocancel --passwordbox "Enter a password for that user." 10 60 3>&1 1>&2 2>&3 3>&1)
-	pass2=$(dialog --nocancel --passwordbox "Retype password." 10 60 3>&1 1>&2 2>&3 3>&1)
-	while ! [ "$pass1" = "$pass2" ]; do
-		unset pass2
-		pass1=$(dialog --nocancel --passwordbox "Passwords do not match.\\n\\nEnter password again." 10 60 3>&1 1>&2 2>&3 3>&1)
-		pass2=$(dialog --nocancel --passwordbox "Retype password." 10 60 3>&1 1>&2 2>&3 3>&1)
-	done
-}
-
-preinstallmsg() {
-	dialog --title "Resolution" \
-		--yes-button "Let's go!" \
-		--no-button "I...I can barely stand." \
-		--yesno "The installation script will be fully automated from this point onwards.\\n\\nAre you ready to begin?" 12 60 || {
-		clear
-		exit 1
-	}
+	printf "%s" "Enter your username: "
+	read -r name
+	printf "%s" "Enter your password: "
+	read -r password
 }
 
 adduserandpass() {
 	# Adds user `$name` with password $pass1.
-	dialog --infobox "Adding user \"$name\"..." 7 50
 	useradd -m -g wheel -s /bin/zsh "$name" >/dev/null 2>&1
 	export repodir="/home/$name/.local/src"
 	mkdir -p "$repodir"
 	chown -R "$name":wheel "$(dirname "$repodir")"
-	echo -e "$pass1\n$pass1" | passwd "$name" >/dev/null 2>&1
-	unset pass1 pass2
+	echo -e "$password\n$password" | passwd "$name" >/dev/null 2>&1
+	unset password
 }
 
 permission() {
 	echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/00-wheels-can-sudo
 }
 
-finalize () {
-	dialog --title "Done!" --msgbox "Installation complete! If you see this message, then there's a pretty good chance that there were no (hidden) errors. You may log out and log back in with your new name.\\n\\n-Chris" 12 60
+finalize () { cat << EOF
+
+Done!
+
+Congratulations, you now have a working system. Please restart the system and log in with your username and password.
+
+EOF
 }
 
 ### Main Installation ###
 
 installpkgs() {
 	sed -i '/^#/d' progs.csv
-	total=$(( $(wc -l < progs.csv) ))
-	n=0
 	while IFS=, read -r tag program description
 	do
-		((n++))
-		dialog --infobox "Installing \`$program\` ($n of $total). $description." 8 70
 		case $tag in
 			G) sudo -u $name git -C "$repodir" clone "$program" >/dev/null 2>&1 ;;
 			*) xbps-install -y "$program" >/dev/null 2>&1 ;;
@@ -96,7 +80,6 @@ installpkgs() {
 }
 
 getdotfiles() {
-	dialog --infobox "Downloading and installing config files..." 7 60
 	sudo -u "$name" git -C "$repodir" clone "$dotfilesrepo" >/dev/null 2>&1
 	cd "$repodir"/dotfiles
 	shopt -s dotglob && sudo -u "$name" rsync -r * /home/$name/
@@ -119,7 +102,6 @@ EndSection" > /etc/X11/xorg.conf.d/30-touchpad.conf || error "Failed to update t
 }
 
 compiless() {
-	dialog --infobox "Compiling suckless software..." 7 40
 	for dir in $(echo "dwm st dmenu"); do
 		cd "$repodir"/"$dir" && sudo make clean install >/dev/null 2>&1
 	done
@@ -149,7 +131,7 @@ changeshell() {
 	chsh -s /bin/bash $name >/dev/null 2>&1
  	echo "
 # Source the .profile file.
-[ -f $HOME/.profile ] && . $HOME/.profile " >> /home/$name/.bash_profile || error "Could not change shell for the user."
+[ -f /home/$name/.profile ] && . /home/$name/.profile " >> /home/$name/.bash_profile || error "Could not change shell for the user."
 }
 
 depower() {
@@ -161,16 +143,13 @@ depower() {
 ### Main Function ###
 
 # Installs dialog program to run alongside this script.
-getdialog
+getupdate
 
 # The opening message.
 openingmsg
 
 # Gets the username and password.
 getuserandpass || error "Failed to get username and password."
-
-# The pre-install message. Last chance to get out of this.
-preinstallmsg|| error "Failed to prompt the user properly."
 
 # Add the username and password given earlier.
 adduserandpass || error "Failed to add user and password."
