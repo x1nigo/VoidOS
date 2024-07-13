@@ -45,11 +45,11 @@ getuserandpass(){
 
 adduserandpass() {
 	# Adds user `$name` with password $pass1.
-	useradd -m -g wheel -s /bin/zsh "$name" >/dev/null 2>&1
+	useradd -m -g wheel "$name"
 	export repodir="/home/$name/.local/src"
 	mkdir -p "$repodir"
 	chown -R "$name":wheel "$(dirname "$repodir")"
-	echo -e "$password\n$password" | passwd "$name" >/dev/null 2>&1
+	echo -e "$password\n$password" | passwd "$name"
 	unset password
 }
 
@@ -73,14 +73,14 @@ installpkgs() {
 	while IFS=, read -r tag program description
 	do
 		case $tag in
-			G) sudo -u $name git -C "$repodir" clone "$program" >/dev/null 2>&1 ;;
-			*) xbps-install -y "$program" >/dev/null 2>&1 ;;
+			G) sudo -u $name git -C "$repodir" clone "$program" ;;
+			*) xbps-install -y "$program" ;;
 		esac
 	done < progs.csv
 }
 
 getdotfiles() {
-	sudo -u "$name" git -C "$repodir" clone "$dotfilesrepo" >/dev/null 2>&1
+	sudo -u "$name" git -C "$repodir" clone "$dotfilesrepo"
 	cd "$repodir"/dotfiles
 	shopt -s dotglob && sudo -u "$name" rsync -r * /home/$name/
  	# Link the .shrc file
@@ -101,15 +101,10 @@ MatchIsTouchpad \"on\"
 EndSection" > /etc/X11/xorg.conf.d/30-touchpad.conf || error "Failed to update the udev files."
 }
 
-compiless() {
+compile() {
 	for dir in $(echo "dwm st dmenu"); do
-		cd "$repodir"/"$dir" && sudo make clean install >/dev/null 2>&1
+		cd "$repodir"/"$dir" && sudo make clean install
 	done
-}
-
-removebeep() {
-	rmmod pcspkr 2>/dev/null
-	echo "blacklist pcspkr" >/etc/modprobe.d/nobeep.conf || error "Failed to remove the beep sound. That's annoying."
 }
 
 cleanup() {
@@ -126,9 +121,7 @@ cleanup() {
  	sudo -u $name chmod -R +x /home/$name/.local/bin || error "Failed to remove unnecessary files and other cleaning."
 }
 
-changeshell() {
-	chsh -s /bin/bash >/dev/null 2>&1
-	chsh -s /bin/bash $name >/dev/null 2>&1
+sourceprofile() {
  	echo "
 # Source the .profile file.
 [ -f /home/$name/.profile ] && . /home/$name/.profile " >> /home/$name/.bash_profile || error "Could not change shell for the user."
@@ -167,16 +160,13 @@ getdotfiles || error "Failed to install the user's dotfiles."
 updateudev
 
 # Compiling suckless software.
-compiless || error "Failed to compile all suckless software."
-
-# Remove the beeping sound of your computer.
-removebeep
+compile || error "Failed to compile all suckless software."
 
 # Cleans the files and directories.
 cleanup
 
 # Change shell of the user to `zsh`.
-changeshell || error "Could not change shell for the user."
+sourceprofile || error "Could not change shell for the user."
 
 # De-power the user from infinite greatness.
 depower || error "Could not bring back user from his God-like throne of sudo privilege."
