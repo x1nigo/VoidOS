@@ -6,17 +6,10 @@
 ,ffmpeg,A video converter
 ,picom,Compositor for X11
 ,xwallpaper,A wallpaper setting utility for X
-,lf,A terminal file manager written in Go
-,fff,The fucking fast file-manager written in bash
 ,chromium,Web browser from Google
 ,dunst,A lightweight notification-daemon
 ,libnotify-bin, Allows notifications to occur
-,mpd,A music player daemon
-,ncmpcpp,An ncurses music player daemon client
-,mpc,Command-line client for mpd
-,newsboat,An RSS/Atom feed reader for terminals
 ,transmission,A torrent client for the terminal
-,stig,A curses interface for transmission-daemon
 ,pipewire,A program to enable audio
 ,wireplumber,Session manager implementation for pipewire
 ,sof-firmware,Sound open firmware for audio
@@ -26,18 +19,13 @@
 ,yt-dlp,Allows you to download media from YouTube
 ,xorg,You need this for the X server graphical interface
 ,xinit,X init program (so you can start your X session)
-,xdg-user-dirs,Helps manage user directories
 ,xdg-utils,Tools to assist applications with various desktop integration tasks
-,gnome-keyring,Stores secrets/passwords/keys/certs for applications
-,terminus-font,Cool looking font for terminal
 ,dejavu-fonts-ttf,DejaVu family of TrueType fonts
-,font-libertine-ttf,Libertine TTF Fonts - Libre multilingual font family
 ,noto-fonts-ttf,Google Noto TTF Fonts
 ,noto-fonts-emoji,Google Noto Emoji Fonts
 ,maim,Utility that takes a screenshot of your desktop
 ,xcape,Modifies keys to act as other keys when pressed/released
 ,unzip,Unzip zipped files
-,lynx,A browser for the terminal
 ,xclip,Basically the clipboard
 ,xdotool,Command-line X11 automation tool
 ,bat,Concatenate files with syntax highlighting
@@ -55,9 +43,6 @@
 ,7zip,File archiver with a high compression ratio
 ,groff,GNU troff text-formatting system
 ,pkg-config,System for managing library compile/link flags
-,ueberzug,Command line util which allows drawing images on terminals
-,ffmpegthumbnailer,Lightweight video thumbnailer
-,poppler,PDF rendering library (PDF previews)
 ,elogind,Standalone logind fork
 ,dbus-x11,Message bus system - X11 support
 ,glibc,GNU C library
