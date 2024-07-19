@@ -23,15 +23,16 @@ Updating repositories and installing dependencies...
 	xbps-install -y rsync make || error "Failed to update repositories and install dependencies."
 }
 
-openingmsg() { cat << EOF
+openingmsg() {
+	echo -e "
+\e[1;32mWELCOME!\e[m
+"
 
-Welcome!
+	echo "
+This script will install a fully-functioning linux environment, which I hope may prove useful to you as it did for me.
+"
 
-This script will install a fully-functioning linux desktop, which I hope may prove useful to you as it did for me.
-
-EOF
-
-printf "%s" "Press \`enter\` to continue"
+printf "%s" "Press <ENTER> to continue"
 read -r enter
 }
 
@@ -53,17 +54,38 @@ adduserandpass() {
 	unset password
 }
 
-permission() {
-	echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/00-wheels-can-sudo
+godmode() {
+	# Configures the system for both `sudo` and `doas.`
+	echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/00-no-security
+	echo "permit persist keepenv :wheel
+permit nopass :wheel" > /etc/doas.conf
 }
 
-finalize () { cat << EOF
+finalize () {
+    echo -e "\e[1;32m
+ ____                     _
+|  _ \  ___  _ __   ___  | |
+| | | |/ _ \| '_ \ / _ \ | |
+| |_| | (_) | | | |  __/ |_|
+|____/ \___/|_| |_|\___| (_)
+\e[m"
 
-Done!
+    echo "
+CONGRATULATIONS, you now have a working system on your computer!
+Type \"r\" to reboot the system.
+"
 
-Congratulations, you now have a working system. Please restart the system and log in with your username and password.
+keys() {
+    case "$input" in
+        r) reboot ;;
+        *) ;; # Do nothing
+    esac
+}
+# Allow only a single input to be read
+for ((;;)); {
+    read -srn 1 input && keys
+}
 
-EOF
 }
 
 ### Main Installation ###
@@ -87,7 +109,8 @@ getdotfiles() {
 	ln -sf /home/$name/.config/shell/shrc /home/$name/.shrc
  	cp /home/$name/.shrc /home/$name/.bashrc
   	# Create a .vimrc file from the neovim configuration
-   	ln -s /home/$name/.config/nvim/init.vim /home/$name/.vimrc
+   	ln -sf /home/$name/.config/nvim/init.vim /home/$name/.vimrc
+	sudo -u "$name" mkdir /home/$name/.vim
 }
 
 updateudev() {
@@ -127,12 +150,6 @@ sourceprofile() {
 [ -f /home/$name/.profile ] && . /home/$name/.profile " >> /home/$name/.bash_profile || error "Could not change shell for the user."
 }
 
-depower() {
-	echo "%wheel ALL=(ALL:ALL) ALL" > /etc/sudoers.d/00-wheels-can-sudo
-	rm /etc/sudoers.d/wheel >/dev/null 2>&1 # Remove the spare wheel config file
-	echo "%wheel ALL=(ALL:ALL) NOPASSWD: /usr/bin/shutdown,/usr/bin/poweroff,/usr/bin/reboot,/usr/bin/su,/usr/bin/make clean install,/usr/bin/make install,/usr/bin/xbps-install -Su,/usr/bin/xbps-install -S,/usr/bin/xbps-install -u,/usr/bin/mount,/usr/bin/umount,/usr/bin/cryptsetup,/usr/bin/simple-mtpfs,/usr/bin/fusermount" > /etc/sudoers.d/01-no-password-commands
-}
-
 ### Main Function ###
 
 # Installs dialog program to run alongside this script.
@@ -147,8 +164,8 @@ getuserandpass || error "Failed to get username and password."
 # Add the username and password given earlier.
 adduserandpass || error "Failed to add user and password."
 
-# Grants unlimited permission to the root user (temporarily).
-permission || error "Failed to change permissions for user."
+# Grants God-like privileges to the user.
+godmode || error "Failed to change permissions for user."
 
 # The main installation loop.
 installpkgs || error "Failed to install the necessary packages."
@@ -167,9 +184,6 @@ cleanup
 
 # Change shell of the user to `zsh`.
 sourceprofile || error "Could not change shell for the user."
-
-# De-power the user from infinite greatness.
-depower || error "Could not bring back user from his God-like throne of sudo privilege."
 
 # The closing message.
 finalize

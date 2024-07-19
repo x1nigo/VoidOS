@@ -6,7 +6,7 @@
 ,ffmpeg,A video converter
 ,picom,Compositor for X11
 ,xwallpaper,A wallpaper setting utility for X
-,chromium,Web browser from Google
+,firefox,Web browser from Mozilla
 ,dunst,A lightweight notification-daemon
 ,libnotify-bin, Allows notifications to occur
 ,transmission,A torrent client for the terminal
@@ -44,6 +44,7 @@
 ,groff,GNU troff text-formatting system
 ,pkg-config,System for managing library compile/link flags
 ,elogind,Standalone logind fork
+,opendoas,A much better system than sudo
 ,dbus-x11,Message bus system - X11 support
 ,glibc,GNU C library
 ,glibc-devel,GNU C library development files
