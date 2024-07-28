@@ -27,7 +27,7 @@ set_privileges() {
 install_pkgs() {
 	sed '/^#/d;/^$/d' progs.txt > /tmp/progs.txt
 	while IFS=$'\n' read -r prog; do
-		apk add "$prog"
+		xbps-install -Sy "$prog"
 	done < /tmp/progs.txt
 }
 
