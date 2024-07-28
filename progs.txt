@@ -1,0 +1,39 @@
+# General
+nsxiv
+zathura
+zathura-pdf-mupdf
+mpv
+ffmpeg
+firefox
+dunst
+libnotify-bin
+
+# Audio
+pipewire
+wireplumber
+sof-firmware
+pulsemixer
+bluez
+libspa-bluetooth
+
+# Graphical interface
+xorg
+xinit
+
+# Others
+fontconfig
+fontconfig-devel
+freetype
+freetype-devel
+pkg-config
+elogind
+opendoas
+dbus-x11
+libXinerama-devel
+cparser
+libX11
+libX11-devel
+libXft
+libXft-devel
+ncurses
+ncurses-devel

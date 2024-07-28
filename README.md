@@ -1,5 +1,5 @@
 # VoidOS
-This is my bootstrapping script for void linux.
+This is my bootstrapping script for Void Linux.
 
 ## Requirements
 - A newly installed void linux system.
